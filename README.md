@@ -3,7 +3,7 @@ Category
 * [Rescue using hisi_idt](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-using-hisi_idt)
 * [Rescue From Endless-Rebooting](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-from-endless-rebooting) 
 * [Flash Images by Bootloader](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#flash-images-by-bootloader)
-* [How to create boot.img and dt.img](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#how-to-create-boot-img-and-dt-img)
+* [How to create boot.img and dt.img](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#how-to-create-bootimg-and-dtimg)
 
 Rescue Using hisi_idt
 =====================
