@@ -3,7 +3,8 @@ Category
 * [Rescue using hisi_idt](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-using-hisi_idt)
 * [Rescue From Endless-Rebooting](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-from-endless-rebooting) 
 * [Flash Images by Bootloader](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#flash-images-by-bootloader)
-  
+* [How to create boot.img and dt.img](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#how-to-create-bootimg-and-dtimg)
+
 Rescue Using hisi_idt
 =====================
 
@@ -146,7 +147,7 @@ c. On PC side, in serial log, you should observe the following boot message:
 ```sh
 xloader chipid is: 0x36600110, start at 449ms.
 Build Date: Nov  1 2016, 16:14:10
-[clock_init] ++
+[clock_init] +
 hi3660 [clk_setup]
 [clock_init] --
 storage type is UFS
@@ -211,3 +212,17 @@ finished. total time: 0.267s
 $
 ```
 
+How to create boot.img and dt.img
+=================================
+This section describes how to create boot.img and dt.img for use with AOSP. First of all, please make sure you downloaded (or git clone) these two tools from this repository:
+```
+mkbootimg
+dtbTool
+```
+
+Please download this script file, and modify it according to your local environment. Then run it.
+```
+$ ./gen_boot_dts_imgs-sample.sh
+```
+
+Note: Since boot.img depends on ramdisk.img which is generated from AOSP build, please make sure your AOSP build being done first.
