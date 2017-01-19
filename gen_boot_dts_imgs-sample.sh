@@ -38,9 +38,9 @@ fi
 
 cd ${GEN_IMAGES_DIR}
 if [ $WITH_VFB -eq 1 ]; then
-	./mkbootimg  --kernel Image.gz --ramdisk ${PRODUCT_OUT}/ramdisk.img --cmdline "loglevel=15 console=ttyAMA5,115200,8n1 androidboot.hardware=hikey960 androidboot.selinux=permissive firmware_class.path=/system/etc/firmware video=vfb" --base 0x0 --tags-addr 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --os_version 7.0 --os_patch_level 2016-08-05  --output boot.img
+	./mkbootimg  --kernel Image.gz --ramdisk ${PRODUCT_OUT}/ramdisk.img --cmdline "loglevel=15 androidboot.hardware=hikey960 androidboot.selinux=permissive firmware_class.path=/system/etc/firmware video=vfb" --base 0x0 --tags-addr 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --os_version 7.0 --os_patch_level 2016-08-05  --output boot.img
 else
-	./mkbootimg  --kernel Image.gz --ramdisk ${PRODUCT_OUT}/ramdisk.img --cmdline "loglevel=15 console=ttyAMA5,115200,8n1 androidboot.hardware=hikey960 androidboot.selinux=permissive firmware_class.path=/system/etc/firmware" --base 0x0 --tags-addr 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --os_version 7.0 --os_patch_level 2016-08-05  --output boot.img
+	./mkbootimg  --kernel Image.gz --ramdisk ${PRODUCT_OUT}/ramdisk.img --cmdline "loglevel=15 androidboot.hardware=hikey960 androidboot.selinux=permissive firmware_class.path=/system/etc/firmware" --base 0x0 --tags-addr 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --os_version 7.0 --os_patch_level 2016-08-05  --output boot.img
 fi
 if [ $DTB -eq 1 ]; then
 	./dtbTool -o dt.img -s 2048 -p ${KERNEL_DIR}/scripts/dtc/ ./
