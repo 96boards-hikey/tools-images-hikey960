@@ -5,6 +5,15 @@ Category
 * [Flash Images by Bootloader](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#flash-images-by-bootloader)
 * [How to create boot.img and dt.img](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#how-to-create-bootimg-and-dtimg)
 
+Hardware Versions
+=================
+
+There are two versions of HiKey960: v1 and v2. One important difference you should know is: v1 is using Jumper (J2001), while v2 is using DIP switch (SW2201). Both are located in the bottom side of board.
+
+Jumper Pin 1-2 = DIP switch 1
+Jumper Pin 3-4 = DIP switch 2
+JUmper Pin 5-6 = DIP switch 3
+
 Rescue Using hisi_idt
 =====================
 
