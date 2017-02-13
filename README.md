@@ -227,7 +227,7 @@ How to create boot.img and dt.img
 This section describes how to create boot.img and dt.img for use with AOSP. First of all, please make sure you downloaded (or git clone) these two tools from this repository:
 ```
 mkbootimg
-dtbTool
+mkdtimg
 ```
 
 Please download this script file, and modify it according to your local environment. Then run it.
