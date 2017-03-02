@@ -1,5 +1,6 @@
 Category
 ========
+
 * [Hardware Versions](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#hardware-versions)
 * [Rescue using hisi_idt](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-using-hisi_idt)
 * [Rescue From Endless-Rebooting](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README.md#rescue-from-endless-rebooting) 
@@ -11,9 +12,9 @@ Hardware Versions
 
 There are two versions of HiKey960: v1 and v2. One important difference you should know is: v1 is using Jumper (J2001), while v2 is using DIP switch (SW2201). Both are located in the bottom side of board.
 
-Jumper Pin 1-2 = DIP switch 1
-Jumper Pin 3-4 = DIP switch 2
-JUmper Pin 5-6 = DIP switch 3
+* Jumper Pin 1-2 = DIP switch 1
+* Jumper Pin 3-4 = DIP switch 2
+* JUmper Pin 5-6 = DIP switch 3
 
 Rescue Using hisi_idt
 =====================
@@ -22,6 +23,7 @@ This document descirbes the steps to use hisi-idt.py to download binaries to HiK
 
 1. Command syntax
 -----------------
+
 ```sh
 sudo ./hikey_idt -c config -p /dev/ttyUSB1
 ```
@@ -29,39 +31,25 @@ sudo ./hikey_idt -c config -p /dev/ttyUSB1
 2. Download to DDR
 ------------------
 
-a.  In the release package, please find these files:
-	- sec_usb_xloader.img
-	- sec_uce_boot.img
-	- sec_fastboot.img
-
-b.  Change Jumper settings, to enter forced-download mode:
-	- find J2001, short Pin 1-2
-	- find J2001, short Pin 3-4
-
-c.  Apply power to the board.
-d.  Insert USB Type-C cable (OTG port) to the board, and connect the other end
-    to your Linux PC, then
-
-e.  Check whether there is a device node "/dev/ttyUSBx". If there is, it means
-    your PC has detected the target board; If there is not, try to repeat
-    step c and d.
-
-f.  Prepare the config file. The contents should be in below.	
-```sh
-  ./sec_usb_xloader.img 0x00020000
-  ./sec_uce_boot.img 0x6A908000
-  ./sec_fastboot.img 0x1AC00000
-```
-The third image runs on Cortex A53 core, and others are not. You need to put all images into the same directory of hikey_idt.
-
-g.  Run the script. Eg. if the device node you get from step e is
-    "/dev/ttyUSB1", then use "-d /dev/ttyUSB1". A complete command line looks
-    like:
+* In the release package, please find these files:
+  - sec_usb_xloader.img
+  - sec_uce_boot.img
+  - sec_fastboot.img
+* Change Jumper settings, to enter forced-download mode:
+  - find J2001, short Pin 1-2
+  - find J2001, short Pin 3-4
+* Apply power to the board.
+* Insert USB Type-C cable (OTG port) to the board, and connect the other end to your Linux PC, then
+* Check whether there is a device node "/dev/ttyUSBx". If there is, it means your PC has detected the target board; If there is not, try to repeat previous steps.
+* Prepare the config file. The third image runs on Cortex A53 core, and others are not. You need to put all images into the same directory of hikey_idt. The contents should be in below.
+  - ./sec_usb_xloader.img 0x00020000
+  - ./sec_uce_boot.img 0x6A908000
+  - ./sec_fastboot.img 0x1AC00000
+* Run the script. Eg. if the device node you get from step e is "/dev/ttyUSB1", then use "-d /dev/ttyUSB1". A complete command line looks like:
 ```sh
 $ sudo ./hikey_idt -c config -p /dev/ttyUSB1
 ```
-
-h. Once images are downloaded successfully, it will print out below log:
+* Once images are downloaded successfully, it will print out below log:
 ```sh
 Config name: config
 Port name: /dev/ttyUSB1
@@ -113,9 +101,10 @@ sudo fastboot flash cache $(IMG_FOLDER)/cache.img
 
 4. Troubleshooting
 ------------------
-a.  Need supervisor permission for hisi-idt: "sudo ./hikey_idt"
-b.  Need supervisor permission for fastboot: "sudo fastboot"
-c.  See "rescue from endless-rebooting" below.
+
+* Need supervisor permission for hisi-idt: "sudo ./hikey_idt"
+* Need supervisor permission for fastboot: "sudo fastboot"
+* See "rescue from endless-rebooting" below.
 
 Rescue From Endless-Rebooting
 =============================
@@ -140,20 +129,16 @@ reboot_reason: set_reboot_type is 0x000
 
 To rescue from this error, you need to follow instructions in Above, plug in Jumper J2001 Pin 3-4, using hisi_idt.
 
-
 Flash Images by Bootloader
 ============================
 
-You can use fastboot protocol to flash images to HiKey960. To enter fastboot
-flashing mode, you need to use a serial mezzanine board.
-	- http://www.96boards.org/product/uarts/
+You can use fastboot protocol to flash images to HiKey960. To enter fastboot flashing mode, you need to use a serial mezzanine board. See http://www.96boards.org/product/uarts/
 
-a. Connect serial mezzanine to HiKey960. Connect micro-USB to PC. And PC side,
-   config USB serial as: 115200, 8N1
-b. Power up HiKey960:
-	- Plug in DC power, then
-	- Plug in USB Type-C cable, and connect the other end to your PC.
-c. On PC side, in serial log, you should observe the following boot message:
+* Connect serial mezzanine to HiKey960. Connect micro-USB to PC. And PC side, config USB serial as: 115200, 8N1
+* Power up HiKey960:
+  - Plug in DC power, then
+  - Plug in USB Type-C cable, and connect the other end to your PC.
+* On PC side, in serial log, you should observe the following boot message:
 ```sh
 xloader chipid is: 0x36600110, start at 449ms.
 Build Date: Nov  1 2016, 16:14:10
@@ -184,8 +169,7 @@ pavs:674ms
 pavs 2
 pavs:938ms
 ```
-
-d. When you any of these lines of messages, press the 'reset' button on serial
+* When you any of these lines of messages, press the 'reset' button on serial
    mezzanine.
 ```sh
 pavs 0
@@ -195,8 +179,7 @@ pavs:674ms
 pavs 2
 pavs:938ms
 ```
-
-e. This should trigger HiKey960 to reboot with a special boot reason, and enter fastboot flash mode. Confirm that succeeds by oberving the following messages:
+* This should trigger HiKey960 to reboot with a special boot reason, and enter fastboot flash mode. Confirm that succeeds by oberving the following messages:
 ```sh
 usbloader: bootmode is 4
 usb: [USBFINFO]USB RESET
@@ -206,8 +189,7 @@ usb: [USBFINFO]USB CONNDONE, highspeed
 usbloader: usb: online (highspeed)
 usb: [USBFINFO]usb enum done
 ```
-
-f. At this point, on your PC, you should be able to run "sudo fastboot flash
+* At this point, on your PC, you should be able to run "sudo fastboot flash
    xxx [xxx.img]". Eg.
 ```sh
 $ sudo fastboot devices
@@ -224,6 +206,7 @@ $
 
 How to create boot.img and dt.img
 =================================
+
 This section describes how to create boot.img and dt.img for use with AOSP. First of all, please make sure you downloaded (or git clone) these two tools from this repository:
 ```
 mkbootimg
