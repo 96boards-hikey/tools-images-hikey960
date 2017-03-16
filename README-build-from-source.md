@@ -2,8 +2,9 @@ This document describes how to build ATF, UEFI, Linux kernel and Android for HiK
 
 Category
 ========
-* [ARM Trusted Firmware](https:)
-
+* [Bootloader](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README-build-from-source.md#bootloader)
+* [Linux Kernel](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README-build-from-source.md#linux-kernel)
+* [Android](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README-build-from-source.md#android)
 
 Bootloader
 ====================
