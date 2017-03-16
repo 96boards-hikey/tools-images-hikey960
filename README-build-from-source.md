@@ -189,11 +189,6 @@ echo "dt.img boot.img succeeds!"
 Android
 =======
 
-Code Locations
---------------
-
-Build Procedure
----------------
-
+Please read [this file](https://github.com/96boards-hikey/android_manifest/blob/aosp-master/README.md) to learn how to build Android for HiKey960.
 
 
