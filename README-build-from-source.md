@@ -119,7 +119,7 @@ Linux Kernel
 Code Locations
 --------------
 Git repository: https://github.com/96boards-hikey/linux/
-Branch: [android-hikey-linaro-4.4](https://github.com/96boards-hikey/linux/commits/android-hikey-linaro-4.4)
+Branch: [working-android-hikey-linaro-4.4](https://github.com/96boards-hikey/linux/commits/working-android-hikey-linaro-4.4)
 
 Note: 
 a) We also maintain two other kernel branches for HiKey960: [v4.9](https://github.com/96boards-hikey/linux/commits/hikey960-v4.9) and [upstream rebase](https://github.com/96boards-hikey/linux/commits/hikey960-upstream-rebase). Their build methods are similar to v4.4, but they are not listed here. Send email to [Guodong Xu](mailto:guodong.xu@linaro.org) in case you want to know more.
