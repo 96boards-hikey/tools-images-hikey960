@@ -78,14 +78,15 @@ After download these images onto the board DDR, you MUST use 'fastboot' tool to 
 
 Note: Don't forget to remove Jumper J2001 Pin 3-4 after you 'flash'ed these images.
 ```sh
+# partition table
+fastboot flash ptable ${IMG_FOLDER}/ptable.img
+
 # bootloader
 sudo fastboot flash xloader  $(IMG_FOLDER)/sec_xloader.img
 sudo fastboot flash fastboot $(IMG_FOLDER)/fastboot.img
 
 # extra images
-fastboot flash ptable ${IMG_FOLDER}/ptable.img
 fastboot flash nvme   ${IMG_FOLDER}/nvme.img
-fastboot flash vector ${IMG_FOLDER}/vector.img
 fastboot flash fw_lpm3       ${IMG_FOLDER}/lpm3.img
 fastboot flash trustfirmware ${IMG_FOLDER}/bl31.bin
 
