@@ -1,6 +1,12 @@
+#/bin/bash
+DEVICE=$1
 IMG_FOLDER=${PWD}
 
-sudo ./hikey_idt -c config -p /dev/ttyUSB1
+if [ "${DEVICE}" == "" ]; then
+	DEVICE=/dev/ttyUSB1
+fi
+
+sudo ./hikey_idt -c config -p ${DEVICE}
 
 # partition table
 fastboot flash ptable ${IMG_FOLDER}/ptable.img
