@@ -4,8 +4,8 @@ Note: source code of bl31.bin, fastboot.img, hikey_idt, lpm3.img, nvme.img, ptab
 
 Category
 ========
-* [Linux Kernel](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README-build-from-source.md#linux-kernel)
-* [Android](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/README-build-from-source.md#android)
+* [Linux Kernel](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/build-from-source/README-build-from-source.md#linux-kernel)
+* [Android](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/build-from-source/README-build-from-source.md#android)
 
 Linux Kernel
 ============
