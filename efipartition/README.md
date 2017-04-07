@@ -4,7 +4,7 @@ This is an independent tool with source code. It can be integrated into Android
 Source code or use it independented on linux pc.
 
 
-"Make" then use "efipartition ptable.img", you can get a ptable image.
+```make``` then ```efipartition ptable.img```, you can get a ptable.img
 
 ```
 /*------------------------|
@@ -23,20 +23,12 @@ Source code or use it independented on linux pc.
 */
 ```
 
-In order to be more genera, the ptable can be used for both emmc and ufs. It contain a  
-128Kb emmc partition at the beginning. 
+In order to be more general, the ptable can be used for both emmc and ufs. It contain a 128Kb emmc partition at the beginning. 
 
 **Note:**
 
-Xloader-partition is a static partition table used by xloader, which cannot be modified.   
-It's defined in xloader partition.h
-
-Partition-table-ufs in partition.h is the main partition used by hikey. It contain the   
-static xloader-partition. These are also cannot be modified.
-
-In one word, the partition base size below cannot be changed.
-
-Please also make sure that "device/linaro/hikey" the mount partition number is the same as partition_table_ufs.
+1. Xloader-partition is a static partition table used by xloader, which cannot be modified. Otherwise you have to rebuild xloader.
+2. ```struct partition-table-ufs``` in partition.h is the main partition table used by HiKey960. It contains the static xloader-partitions, which shall not be modified. Ie. Partition base size listed below cannot be changed.
 ```
   {PART_XLOADER_A,        0,         2*1024,          UFS_PART_0},
   {PART_XLOADER_B,        0,         2*1024,          UFS_PART_1},
@@ -52,3 +44,4 @@ Please also make sure that "device/linaro/hikey" the mount partition number is t
   {PART_DTS,              85*1024,  16*1024,         UFS_PART_3},/* dtimage       16M   sdd7 */
   {PART_TRUSTFIRMWARE,    101*1024,  2*1024,          UFS_PART_3},/* trustfirmware 2M    sdd8 */
 ```
+3. Please also make sure that in ```[AOSP]/device/linaro/hikey/hikey960/fstab.hikey960``` the mount partition numbers are the same as ```struct partition_table_ufs```.
