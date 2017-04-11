@@ -45,6 +45,12 @@ Jumper Pin 5-6 = DIP switch 3                     |
 **Host Linux Machine**
 
 - Android SDK “Platform-Tools” for Linux can be downloaded <a href="https://developer.android.com/studio/releases/platform-tools.html" target="_blank">here</a>
+- Use terminal to clone this repository into desired folder and cd into `tools-images-hikey960`
+
+```shell
+$ git clone https://github.com/96boards-hikey/tools-images-hikey960
+$ cd tools-images-hikey960
+```
 
 ## Step 3: Enter recovery/forced-download mode on HiKey960:
 
