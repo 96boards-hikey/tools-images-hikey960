@@ -75,7 +75,7 @@ Fastboot      | Link 5-6 / Switch 3 | open / OFF
 Once again using the terminal on your host machine, execute the following command. Be sure to replace /dev/ttyUSBx with the USB value detected by your machine.
 
 ```sh
-./recovery-flash.sh /dev/ttyUSBx
+$ sudo ./recovery-flash.sh /dev/ttyUSBx
 ```
 
 After it completes, the base firmware will be flashed to the device, this does not mean OS.
