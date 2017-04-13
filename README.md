@@ -46,7 +46,12 @@ Jumper Pin 5-6 = DIP switch 3                     |
 ## Step 2: Dependencies
 
 **Host Linux Machine**
+- Remove modemmanager. At least in Ubuntu 14.04 and 16.04 verions, we found a conflicting issue if modemmanager is installed and active. Modemmanager monitors ttyUSBx's incoming data, when it reads some given pattern, it will send some bytes back into the tty as response. And those bytes sent by modemmanager can make board side recovery flashing tool confuse and fail. Solution is to uninstall this service. If you have a doubt whether you are safe to remove it or not, double confirm here: [ModemManager homepage](http://www.freedesktop.org/wiki/Software/ModemManager/).
 
+```
+$ sudo dpkg -s modemmanager
+$ sudo apt-get remove modemmanager
+```
 - Android SDK “Platform-Tools” for Linux can be downloaded <a href="https://developer.android.com/studio/releases/platform-tools.html" target="_blank">here</a>
 - Use terminal to clone this repository into desired folder and cd into `tools-images-hikey960`
 
