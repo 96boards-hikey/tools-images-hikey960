@@ -100,4 +100,5 @@ Fastboot      | Link 5-6 / Switch 3 | open / OFF    | closed / ON   | open / OFF
 
 ## Troubleshooting
 
+* If recovery script "./recovery-flash.sh /dev/ttyUSBx" fail to run to completion and you see "< waiting for any device >" in a loop, then try uninstalling modemmanager from your host machine. The script will work after that. Don't forget to install modemmanager back after recovery.
 * If you run into trouble, see the [README-technical.md](README-technical.md) file in this directory.
