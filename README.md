@@ -1,6 +1,6 @@
 # Base Firmware files and installation
 
-This sections shows how to install all base firmware components for the HiKey960. Once finished with these instructions, please continue to the [HiKey960 documentation landing page](https://github.com/sdrobertw/HiKey960/blob/master/README.md) to flash an operating system.
+This sections shows how to install all base firmware components for the HiKey960. Once finished with these instructions, please continue to the [HiKey960 documentation landing page](https://github.com/96boards/documentation/tree/master/ConsumerEdition/HiKey960) to flash an operating system.
 
 ***
 
@@ -90,7 +90,7 @@ The board will then be in fastboot mode.
 ## Step 5: Explore other modes, proceed to OS installation
 
 - Remove power from the board
-- Proceed to OS "Installation" through the [HiKey960 documentation landing page](https://github.com/sdrobertw/HiKey960/blob/master/README.md)
+- Proceed to OS "Installation" through the [HiKey960 documentation landing page](https://github.com/96boards/documentation/tree/master/ConsumerEdition/HiKey960)
 
 Name          | Link / Switch       | Normal Mode   | Fastboot Mode | Recovery Mode |
 ------------- | ------------------- | ------------- | ------------- | ------------- |
