@@ -9,19 +9,19 @@ Bootloader
 -----------------
 
    * ARM Trusted Firmware:
-   https://github.com/96boards-hikey/arm-trusted-firmware/tree/testing/hikey960_v1
+   https://github.com/96boards-hikey/arm-trusted-firmware/tree/testing/hikey960_v1.1
 
    * edk2:
-   https://github.com/96boards-hikey/edk2/tree/testing/hikey960_v2.3
+   https://github.com/96boards-hikey/edk2/tree/testing/hikey960_v2.5
 
    * OpenPlatformPkg:
-   https://github.com/96boards-hikey/OpenPlatformPkg/tree/testing/hikey960_v1.3.1
+   https://github.com/96boards-hikey/OpenPlatformPkg/tree/testing/hikey960_v1.3.4
 
    * l-loader:
-   https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1
+   https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1.2
 
    * uefi-tools:
-   https://github.com/96boards-hikey/uefi-tools/tree/hikey960
+   https://github.com/96boards-hikey/uefi-tools/tree/hikey960_v1
 
 
 2. Build Procedure
@@ -35,6 +35,12 @@ Bootloader
      $ln -sf ../OpenPlatformPkg
 
    * Prepare AARCH64 toolchain.
+
+   * If your hikey960 hardware is v1, update uefi-tools/platform.config first. (optional)
+     Uncomment the below sentence. Otherwise, UEFI can't output messages on serial
+     console on hikey960 v1.
+     BUILDFLAGS=-DSERIAL_BASE=0xFDF05000
+     If your hikey960 hardware is v2 or newer, nothing to do.
 
    * Build it as debug mode. Create script file for build.
 
@@ -57,7 +63,7 @@ Bootloader
 
    * Generate partition table
      Make sure that you're using the sgdisk in the l-loader directory.
-     $PTABLE=aosp-8g bash -x generate_ptable.sh
+     $PTABLE=aosp-32g bash -x generate_ptable.sh
 
 
 3. Setup Console
@@ -98,11 +104,58 @@ Bootloader
    * Run the command to download l-loader.bin into HiKey960.
      $sudo ./hikey_idt -c config -p /dev/ttyUSB1
 
-   * Operation in console. (optional)
-     Now autoboot feature isn't supported yet. UEFI will boot to shell directly.
-     So we need to make a choice in UEFI shell.
-     Shell>exit
+   * UEFI running in recovery mode. When prompt '.' is displayed on console, press
+     hotkey 'f' in keyboard. Then Android fastboot app is running.
+     The timeout of prompt '.' is 10 seconds.
 
+   * Update images.
+     $sudo fastboot flash ptable prm_ptable.img
+     $sudo fastboot flash xloader sec_xloader.img
+     $sudo fastboot flash fastboot l-loader.bin
+     $sudo fastboot flash fip fip.bin
+     $sudo fastboot flash boot boot.img
+     $sudo fastboot flash cache cache.img
+     $sudo fastboot flash system system.img
+     $sudo fastboot flash userdata userdata.img
+
+5. Boot UEFI in normal mode
+-----------------------------
+
+   * Hotkey in UEFI
+     When prompt '.' is displayed on console, user could input hotkey from keyboard.
+     If hotkey 'f' is pressed, run AndroidFastbootApp.
+     If hotkey Enter is pressed, load abootimg (android kernel) from UFS by AndroidBootApp.
+     If hotkey Esc is pressed, load boot manager menu. The menu can't display well
+     on minicom. So recommend to use telnet instead.
+
+   * Exit from AndroidFastbootApp.
+     If hotkey Space or Enter is pressed, exit AndroidFastbootApp and load abootimg (android
+     kernel) from UFS by AndroidBootApp.
+
+   * Operation in boot manager menu. (optional)
      A window is displayed in console.
        - Select "Android Fastboot" entry to run fastboot protocol.
        - Select "Android Boot" entry to boot android kernel from UFS device. If it's flushed already.
+
+6. Known Issues
+-----------------------------
+
+   * Kernel panic
+     Since a few patches are not merged int bootloader yet, it'll result in kernel panic.
+
+   * BL31 breaks by UEFI
+     It's the memory layout issue. A few patches are not merged yet.
+
+   * CPUFREQ & CPUIDLE isn't supported.
+     A few patches are not merged yet.
+
+   * SMP isn't supported.
+     A few patches are not merged yet.
+
+   * Can't get early console when boot kernel.
+     A few patches are not merged yet.
+     Workaround:
+       Edit {EDK2}/EmbeddedPkg/Library/AbootimgLib.c.
+       Find L" initrd=0x%x,0x%x" in AbootimgInstallFdt ().
+       Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfdf05000,115200 console=ttyAMA5" for hikey960 v1.
+       Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfff32000,115200 console=ttyAMA6" for hikey960 v2.
