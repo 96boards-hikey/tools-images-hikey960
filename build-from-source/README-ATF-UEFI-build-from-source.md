@@ -118,6 +118,19 @@ Bootloader
      $sudo fastboot flash system system.img
      $sudo fastboot flash userdata userdata.img
 
+   * Note when transit from Hisilicon ptable
+     After flushing the new ptable, an error message is printed on the serial console.
+
+       Warning: Partition 13 doesn't seem to have a GPT partition label. You won't be able to flash it with Fastboot.
+       Error flashing partition.
+       Couldn't flash image:  Invalid Parameter
+
+     Since the partition number of Hisilicon ptable is 13, and the partition number
+     of new ptable is 12.
+     Just reboot and enter recovery mode again. Continue the commands above, user
+     won't meet the error message any more.
+
+
 5. Boot UEFI in normal mode
 -----------------------------
 
