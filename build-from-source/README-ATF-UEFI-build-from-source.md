@@ -137,7 +137,13 @@ Bootloader
        - Select "Android Fastboot" entry to run fastboot protocol.
        - Select "Android Boot" entry to boot android kernel from UFS device. If it's flushed already.
 
-6. Known Issues
+6. Build Android kernel image
+-----------------------------
+
+   * Now gzipped kernel isn't supported yet. Only support Image + DTB format in abootimg.
+     The script file cc in l-loader git repository describes how to build an abootimg on HiKey960 for UEFI.
+
+7. Known Issues
 -----------------------------
 
    * Kernel panic
