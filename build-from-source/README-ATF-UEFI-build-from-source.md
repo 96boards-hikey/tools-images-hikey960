@@ -101,6 +101,9 @@ Bootloader
      ./sec_uce_boot.img 0x6A908000
      ./l-loader.bin 0x1AC00000
 
+   * Remove the modemmanager package. This package may causes hikey_idt tool failure.
+     $sudo apt-get purge modemmanager
+
    * Run the command to download l-loader.bin into HiKey960.
      $sudo ./hikey_idt -c config -p /dev/ttyUSB1
 
@@ -118,17 +121,8 @@ Bootloader
      $sudo fastboot flash system system.img
      $sudo fastboot flash userdata userdata.img
 
-   * Note when transit from Hisilicon ptable
-     After flushing the new ptable, an error message is printed on the serial console.
-
-       Warning: Partition 13 doesn't seem to have a GPT partition label. You won't be able to flash it with Fastboot.
-       Error flashing partition.
-       Couldn't flash image:  Invalid Parameter
-
-     Since the partition number of Hisilicon ptable is 13, and the partition number
-     of new ptable is 12.
-     Just reboot and enter recovery mode again. Continue the commands above, user
-     won't meet the error message any more.
+   * Notice: UEFI could also boot kernel in recovery mode, but BL31 isn't loaded in
+     recovery mode.
 
 
 5. Boot UEFI in normal mode
@@ -150,13 +144,22 @@ Bootloader
        - Select "Android Fastboot" entry to run fastboot protocol.
        - Select "Android Boot" entry to boot android kernel from UFS device. If it's flushed already.
 
+
 6. Build Android kernel image
 -----------------------------
 
    * Now gzipped kernel isn't supported yet. Only support Image + DTB format in abootimg.
      The script file cc in l-loader git repository describes how to build an abootimg on HiKey960 for UEFI.
 
-7. Known Issues
+
+7. Miscellaneous
+-----------------------------
+
+   * Generate new random serial number.
+     $fastboot oem serialno
+
+
+8. Known Issues
 -----------------------------
 
    * Kernel panic
@@ -178,3 +181,5 @@ Bootloader
        Find L" initrd=0x%x,0x%x" in AbootimgInstallFdt ().
        Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfdf05000,115200 console=ttyAMA5" for hikey960 v1.
        Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfff32000,115200 console=ttyAMA6" for hikey960 v2.
+
+   * The feature of autoboot to fastboot protocol by jumper or switch setting isn't supported yet.
