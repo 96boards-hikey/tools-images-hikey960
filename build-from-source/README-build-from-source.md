@@ -83,6 +83,6 @@ echo "dt.img boot.img succeeds!"
 Android
 =======
 
-Please read [this file](https://github.com/96boards-hikey/android_manifest/blob/aosp-master/README.md) to learn how to build Android for HiKey960.
+Please read [this file](https://source.android.com/source/devices#960hikey) to learn how to build Android for HiKey960. HiKey960 is one of development boards [supported by Google AOSP since 26,Apr,2017](https://www.linaro.org/news/linaro-announces-latest-96boards-product-aosp-development/).
 
 
