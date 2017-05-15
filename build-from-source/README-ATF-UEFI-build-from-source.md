@@ -159,24 +159,4 @@ Bootloader
 8. Known Issues
 -----------------------------
 
-   * Kernel panic
-     Since a few patches are not merged int bootloader yet, it'll result in kernel panic.
-
-   * BL31 breaks by UEFI
-     It's the memory layout issue. A few patches are not merged yet.
-
-   * CPUFREQ & CPUIDLE isn't supported.
-     A few patches are not merged yet.
-
-   * SMP isn't supported.
-     A few patches are not merged yet.
-
-   * Can't get early console when boot kernel.
-     <br>A few patches are not merged yet.</br>
-     <br>Workaround:</br>
-     <br>  Edit {EDK2}/EmbeddedPkg/Library/AbootimgLib.c.</br>
-     <br>  Find L" initrd=0x%x,0x%x" in AbootimgInstallFdt ().</br>
-     <br>  Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfdf05000,115200 console=ttyAMA5" for hikey960 v1.</br>
-     <br>  Replace it by L" initrd=0x%x,0x%x earlycon=pl011,0xfff32000,115200 console=ttyAMA6" for hikey960 v2.</br>
-
    * The feature of autoboot to fastboot protocol by jumper or switch setting isn't supported yet.
