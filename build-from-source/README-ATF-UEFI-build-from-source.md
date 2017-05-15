@@ -160,3 +160,11 @@ Bootloader
 -----------------------------
 
    * The feature of autoboot to fastboot protocol by jumper or switch setting isn't supported yet.
+
+   * Fail to run sgdisk when generate partition table.
+     <br>The patch is also provided in l-loader git repository.</br>
+     <br>`sudo apt-get source gdisk`</br>
+     <br>`cd gdisk-1.0.1`</br>
+     <br>`patch -p1 < ${l-loader}/0001-sgdisk-force-blocksize-as-4096.patch`</br>
+     <br>`make`</br>
+     <br>`cp sgdisk ${l-loader}/sgdisk`</br>
