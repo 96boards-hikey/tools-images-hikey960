@@ -23,11 +23,14 @@ Bootloader
    * uefi-tools:
    [link](https://github.com/96boards-hikey/uefi-tools/tree/hikey960_v1)
 
+   * atf-fastboot: (only of HiKey)
+   [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
+
 
 2. Build Procedure
 ------------------
 
-   * Fetch all the above 5 repositories into local host.
+   * Fetch all the above repositories into local host.
      Make all the repositories in the same ${BUILD_PATH}.
 
    * Create the symbol link to OpenPlatformPkg in edk2.
@@ -154,6 +157,14 @@ Bootloader
 
    * Generate new random serial number.
      <br>$fastboot oem serialno</br>
+
+   * HiKey Support.
+     <br>The build process of HiKey platform isn't listed in this document. Please refer the reference build script file __build_uefi.sh__ in l-loader git repository. This reference build file could build ATF/UEFI for both HiKey and HiKey960 platform.</br>
+     <br>atf-fastboot git repository is only for HiKey platform. It derives from old ATF on HiKey. It only contains the feature of downloading images and flushing to eMMC.</br>
+
+   * Partition table.
+     <br>The image format of partition table is simplified. The old ptable.img is discarded. Now both HiKey and HiKey960 use primary partition table image (__prm_ptable.img__).</br>
+     <br>The instructions of generating partition table is different between HiKey and HiKey960. Please refer to __build_uefi.sh__.</br>
 
 
 8. Known Issues
