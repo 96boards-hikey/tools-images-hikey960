@@ -21,7 +21,7 @@ Bootloader
    [link](https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1.2)
 
    * uefi-tools:
-   [link](https://github.com/96boards-hikey/uefi-tools/tree/hikey960_v1)
+   [link](https://github.com/96boards-hikey/uefi-tools/tree/testing/hikey960_v1)
 
    * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
