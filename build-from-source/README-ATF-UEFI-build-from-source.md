@@ -23,7 +23,7 @@ Bootloader
    * uefi-tools:
    [link](https://github.com/96boards-hikey/uefi-tools/tree/hikey960_v1)
 
-   * atf-fastboot: (only of HiKey)
+   * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
 
 
@@ -179,3 +179,5 @@ Bootloader
      <br>`patch -p1 < ${l-loader}/0001-sgdisk-force-blocksize-as-4096.patch`</br>
      <br>`make`</br>
      <br>`cp sgdisk ${l-loader}/sgdisk`</br>
+
+   * SD card isn't supported yet.
