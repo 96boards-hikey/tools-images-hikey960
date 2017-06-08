@@ -9,7 +9,7 @@ Bootloader
 -----------------
 
    * ARM Trusted Firmware:
-   [link](https://github.com/96boards-hikey/arm-trusted-firmware/tree/testing/hikey960_v1.1)
+   [link](https://github.com/ARM-software/arm-trusted-firmware/tree/integration)
 
    * edk2:
    [link](https://github.com/96boards-hikey/edk2/tree/testing/hikey960_v2.5)
