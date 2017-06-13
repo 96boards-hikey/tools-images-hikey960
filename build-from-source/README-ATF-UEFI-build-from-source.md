@@ -170,8 +170,6 @@ Bootloader
 8. Known Issues
 -----------------------------
 
-   * The feature of autoboot to fastboot protocol by jumper or switch setting isn't supported yet.
-
    * Fail to run sgdisk when generate partition table.
      <br>The patch is also provided in l-loader git repository.</br>
      <br>`sudo apt-get source gdisk`</br>
