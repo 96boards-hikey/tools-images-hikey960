@@ -20,8 +20,8 @@ Bootloader
    * l-loader:
    [link](https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1.2)
 
-   * uefi-tools:
-   [link](https://github.com/96boards-hikey/uefi-tools/tree/testing/hikey960_v1)
+   * uefi-tools: (master branch)
+   [link](git://git.linaro.org/uefi/uefi-tools.git)
 
    * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
