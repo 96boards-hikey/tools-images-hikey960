@@ -93,6 +93,7 @@ Bootloader
    * Generate l-loader.bin.
      <br>`$cd tools-images-hikey960`</br>
      <br>`$ln -sf ${BUILD_PATH}/l-loader/l-loader.bin`</br>
+     <br>`$ln -sf ${BUILD_PATH}/l-loader/fip.bin`</br>
 
    * Prepare config file.
      <br>_$vi config_</br>
