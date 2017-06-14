@@ -47,7 +47,7 @@ Bootloader
 
    * Build it as debug mode. Create script file for build.
      <br>`BUILD_OPTION=DEBUG`</br>
-     <br>`export AARCH64_TOOLCHAIN=GCC48`</br>
+     <br>`export AARCH64_TOOLCHAIN=GCC5`</br>
      <br>`export UEFI_TOOLS_DIR=${BUILD_PATH}/uefi-tools`<br>
      <br>`export EDK2_DIR=${BUILD_PATH}/edk2`</br>
      <br>`EDK2_OUTPUT_DIR=${EDK2_DIR}/Build/HiKey960/${BUILD_OPTION}_${AARCH64_TOOLCHAIN}`</br>
