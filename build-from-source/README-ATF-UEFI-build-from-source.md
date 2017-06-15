@@ -21,7 +21,7 @@ Bootloader
    [link](https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1.2)
 
    * uefi-tools: (master branch)
-   [link](git://git.linaro.org/uefi/uefi-tools.git)
+   [link](https://git.linaro.org/uefi/uefi-tools.git)
 
    * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
@@ -47,7 +47,7 @@ Bootloader
 
    * Build it as debug mode. Create script file for build.
      <br>`BUILD_OPTION=DEBUG`</br>
-     <br>`export AARCH64_TOOLCHAIN=GCC48`</br>
+     <br>`export AARCH64_TOOLCHAIN=GCC5`</br>
      <br>`export UEFI_TOOLS_DIR=${BUILD_PATH}/uefi-tools`<br>
      <br>`export EDK2_DIR=${BUILD_PATH}/edk2`</br>
      <br>`EDK2_OUTPUT_DIR=${EDK2_DIR}/Build/HiKey960/${BUILD_OPTION}_${AARCH64_TOOLCHAIN}`</br>
@@ -63,7 +63,7 @@ Bootloader
 
    * Generate partition table.
      <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
-     <br>`$PTABLE=aosp-32g SECTOR_SIZE=4096 SGDISK=./sgdisk bash -x generate_ptable.sh`</br>
+     <br>`PTABLE=aosp-32g SECTOR_SIZE=4096 SGDISK=./sgdisk bash -x generate_ptable.sh`</br>
 
 
 3. Setup Console
@@ -93,11 +93,12 @@ Bootloader
    * Generate l-loader.bin.
      <br>`$cd tools-images-hikey960`</br>
      <br>`$ln -sf ${BUILD_PATH}/l-loader/l-loader.bin`</br>
+     <br>`$ln -sf ${BUILD_PATH}/l-loader/fip.bin`</br>
 
    * Prepare config file.
      <br>_$vi config_</br>
      <br>_# The content of config file_</br>
-     <br>`./sec_user_xloader.img 0x00020000`</br>
+     <br>`./sec_usb_xloader.img 0x00020000`</br>
      <br>`./sec_uce_boot.img 0x6A908000`</br>
      <br>`./l-loader.bin 0x1AC00000`</br>
 
