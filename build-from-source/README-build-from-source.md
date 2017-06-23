@@ -26,8 +26,8 @@ Step 0: preparations.
   * Either from your AOSP build output folder: ${AOSP_ROOTDIR}/out/target/product/hikey960
   * Or, fetch it from a released build. (TODO: public release doesn't exist yet)
 * To generate boot.img and dt.img, you need download these tools:
-  * [`mkbootimg`](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/mkbootimg)
-  * [`mkdtimg`](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/mkdtimg)
+  * [`mkbootimg`](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/build-from-source/mkbootimg)
+  * [`mkdtimg`](https://github.com/96boards-hikey/tools-images-hikey960/blob/master/build-from-source/mkdtimg)
 
 Step 1: build Image.gz and hi3660-hikey960.dtb
 ```sh
