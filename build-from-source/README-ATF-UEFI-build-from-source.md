@@ -37,7 +37,7 @@ Bootloader
      <br>`$cd ${BUILD_PATH}/edk2`</br>
      <br>`$ln -sf ../OpenPlatformPkg`</br>
 
-   * Prepare AARCH64 toolchain.
+   * Prepare AARCH64 toolchain from Linaro. [link](http://releases.linaro.org/components/toolchain/binaries/)
 
    * If your hikey960 hardware is v1, update _uefi-tools/platform.config_ first. _(optional)_
      <br>__Uncomment the below sentence. Otherwise, UEFI can't output messages on serial
