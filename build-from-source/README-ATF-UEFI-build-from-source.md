@@ -26,12 +26,19 @@ Bootloader
    * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
 
-
 2. Build Procedure
 ------------------
 
    * Fetch all the above repositories into local host.
      Make all the repositories in the same ${BUILD_PATH}.
+     ```
+     git clone https://github.com/ARM-software/arm-trusted-firmware -b integration
+     git clone https://github.com/96boards-hikey/edk2 -b testing/hikey960_v2.5
+     git clone https://github.com/96boards-hikey/OpenPlatformPkg -b testing/hikey960_v1.3.4
+     git clone https://github.com/96boards-hikey/l-loader -b testing/hikey960_v1.2
+     git clone https://git.linaro.org/uefi/uefi-tools
+     git clone https://github.com/96boards-hikey/atf-fastboot
+     ```
 
    * Create the symbol link to OpenPlatformPkg in edk2.
      <br>`$cd ${BUILD_PATH}/edk2`</br>
@@ -54,17 +61,14 @@ Bootloader
      <br>`cd ${EDK2_DIR}`</br>
      <br>`# Build UEFI & ARM Trust Firmware`</br>
      <br>`${UEFI_TOOLS_DIR}/uefi-build.sh -b ${BUILD_OPTION} -a ../arm-trusted-firmware hikey960`</br>
-     <br>`# Generate l-loader.bin`</br>
+
+   * Generate l-loader.bin and partition table
+     <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
      <br>`cd ${BUILD_PATH}/l-loader`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl1.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/fip.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/BL33_AP_UEFI.fd`</br>
-     <br>`python gen_loader_hikey960.py -o l-loader.bin --img_bl1=bl1.bin --img_ns_bl1u=BL33_AP_UEFI.fd`</br>
-
-   * Generate partition table.
-     <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
-     <br>`PTABLE=aosp-32g SECTOR_SIZE=4096 SGDISK=./sgdisk bash -x generate_ptable.sh`</br>
-
+     <br>`make hikey960`</br>
 
 3. Setup Console
 ----------------
