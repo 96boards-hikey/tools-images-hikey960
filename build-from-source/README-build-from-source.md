@@ -1,6 +1,6 @@
 This document describes how to Linux kernel and Android for HiKey960 from source.
 
-Note: source code of bl31.bin, fastboot.img, hikey_idt, lpm3.img, nvme.img, ptable.img, sec_fastboot.img, sec_uce_boot.img, sec_usb_xloader.img and sec_xloader.img are not available.
+Note: source code of hisi-bl31.bin, fastboot.img, hikey_idt, hisi-lpm3.img, hisi-nvme.img, ptable.img, sec_fastboot.img, sec_uce_boot.img, sec_usb_xloader.img and sec_xloader.img are not available.
 
 Category
 ========

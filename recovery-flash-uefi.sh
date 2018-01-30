@@ -24,6 +24,6 @@ fastboot flash fastboot ${UEFI_BUILD_PATH}/l-loader.bin
 fastboot flash fip ${UEFI_BUILD_PATH}/fip.bin
 
 # extra images
-fastboot flash nvme   ${IMG_FOLDER}/nvme.img
-fastboot flash fw_lpm3   ${IMG_FOLDER}/lpm3.img
-fastboot flash trustfirmware   ${IMG_FOLDER}/bl31.bin
+fastboot flash nvme   ${IMG_FOLDER}/hisi-nvme.img
+fastboot flash fw_lpm3   ${IMG_FOLDER}/hisi-lpm3.img
+fastboot flash trustfirmware   ${IMG_FOLDER}/hisi-bl31.bin

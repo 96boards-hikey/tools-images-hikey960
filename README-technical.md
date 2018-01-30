@@ -86,9 +86,9 @@ sudo fastboot flash xloader  $(IMG_FOLDER)/sec_xloader.img
 sudo fastboot flash fastboot $(IMG_FOLDER)/fastboot.img
 
 # extra images
-fastboot flash nvme   ${IMG_FOLDER}/nvme.img
-fastboot flash fw_lpm3       ${IMG_FOLDER}/lpm3.img
-fastboot flash trustfirmware ${IMG_FOLDER}/bl31.bin
+fastboot flash nvme   ${IMG_FOLDER}/hisi-nvme.img
+fastboot flash fw_lpm3       ${IMG_FOLDER}/hisi-lpm3.img
+fastboot flash trustfirmware ${IMG_FOLDER}/hisi-bl31.bin
 
 # Depending on your needs, the following is optional
 # kernel
