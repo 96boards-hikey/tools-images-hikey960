@@ -16,10 +16,10 @@ There are two versions of HiKey960: v1 and v2. One important difference you shou
 * Jumper Pin 3-4 = DIP switch 2
 * JUmper Pin 5-6 = DIP switch 3
 
-Rescue Using hisi_idt
+Rescue Using hikey_idt
 =====================
 
-This document descirbes the steps to use hisi-idt.py to download binaries to HiKey960 through serial port. On HiKey960, serial port means a ttyUSB device emulated from its OTG port.
+This document describes the steps to use hikey-idt to download binaries to HiKey960 through serial port. On HiKey960, serial port means a ttyUSB device emulated from its OTG port.
 
 1. Command syntax
 -----------------
