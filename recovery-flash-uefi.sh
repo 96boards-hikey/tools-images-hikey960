@@ -22,8 +22,3 @@ fastboot flash ptable ${UEFI_BUILD_PATH}/prm_ptable.img
 fastboot flash xloader ${UEFI_BUILD_PATH}/sec_xloader.img
 fastboot flash fastboot ${UEFI_BUILD_PATH}/l-loader.bin
 fastboot flash fip ${UEFI_BUILD_PATH}/fip.bin
-
-# extra images
-fastboot flash nvme   ${IMG_FOLDER}/hisi-nvme.img
-fastboot flash fw_lpm3   ${IMG_FOLDER}/hisi-lpm3.img
-fastboot flash trustfirmware   ${IMG_FOLDER}/hisi-bl31.bin
