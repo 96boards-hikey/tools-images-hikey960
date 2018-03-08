@@ -6,7 +6,7 @@
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT
 
-BASE_URL=http://builds.96boards.org/snapshots/reference-platform/components/uefi-staging
+BASE_URL=https://snapshots.linaro.org/96boards/reference-platform/components/uefi-staging
 VERSION=20
 PRODUCT=hikey960
 RELEASE=release
