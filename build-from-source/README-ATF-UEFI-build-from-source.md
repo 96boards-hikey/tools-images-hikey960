@@ -66,6 +66,7 @@ Bootloader
      <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
      <br>`cd ${BUILD_PATH}/l-loader`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl1.bin`</br>
+     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl2.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/fip.bin`</br>
      <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/BL33_AP_UEFI.fd`</br>
      <br>`make hikey960`</br>
@@ -104,7 +105,7 @@ Bootloader
      <br>_# The content of config file_</br>
      <br>`./sec_usb_xloader.img 0x00020000`</br>
      <br>`./sec_uce_boot.img 0x6A908000`</br>
-     <br>`./l-loader.bin 0x1AC00000`</br>
+     <br>`./recovery.bin 0x1AC00000`</br>
 
    * Remove the modemmanager package. This package may causes hikey_idt tool failure.
      <br>`$sudo apt-get purge modemmanager`</br>
@@ -153,7 +154,7 @@ Bootloader
 6. Build Android kernel image
 -----------------------------
 
-   * Now gzipped kernel isn't supported yet. Only support Image + DTB format in abootimg.
+   * Both raw kernel and gzipped kernel are supported now. But DTB must be appended on kernel image to generate abootimg.
      <br>The script file cc in l-loader git repository describes how to build an abootimg on HiKey960 for UEFI.</br>
 
 
@@ -182,5 +183,3 @@ Bootloader
      <br>`patch -p1 < ${l-loader}/0001-sgdisk-force-blocksize-as-4096.patch`</br>
      <br>`make`</br>
      <br>`cp sgdisk ${l-loader}/sgdisk`</br>
-
-   * SD card isn't supported yet.
