@@ -103,8 +103,8 @@ Bootloader
    * Prepare config file.
      <br>_$vi config_</br>
      <br>_# The content of config file_</br>
-     <br>`./sec_usb_xloader.img 0x00020000`</br>
-     <br>`./sec_uce_boot.img 0x6A908000`</br>
+     <br>`./hisi-sec_usb_xloader.img 0x00020000`</br>
+     <br>`./hisi-sec_uce_boot.img 0x6A908000`</br>
      <br>`./recovery.bin 0x1AC00000`</br>
 
    * Remove the modemmanager package. This package may causes hikey_idt tool failure.
@@ -119,7 +119,7 @@ Bootloader
 
    * Update images.
      <br>`$sudo fastboot flash ptable prm_ptable.img`</br>
-     <br>`$sudo fastboot flash xloader sec_xloader.img`</br>
+     <br>`$sudo fastboot flash xloader hisi-sec_xloader.img`</br>
      <br>`$sudo fastboot flash fastboot l-loader.bin`</br>
      <br>`$sudo fastboot flash fip fip.bin`</br>
      <br>`$sudo fastboot flash boot boot.img`</br>
@@ -169,7 +169,7 @@ Bootloader
      <br>atf-fastboot git repository is only for HiKey platform. It derives from old ATF on HiKey. It only contains the feature of downloading images and flushing to eMMC.</br>
 
    * Partition table.
-     <br>The image format of partition table is simplified. The old ptable.img is discarded. Now both HiKey and HiKey960 use primary partition table image (__prm_ptable.img__).</br>
+     <br>The image format of partition table is simplified. The old hisi-ptable.img is discarded. Now both HiKey and HiKey960 use primary partition table image (__prm_ptable.img__).</br>
      <br>The instructions of generating partition table is different between HiKey and HiKey960. Please refer to __build_uefi.sh__.</br>
 
 

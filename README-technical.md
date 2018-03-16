@@ -32,9 +32,9 @@ sudo ./hikey_idt -c config -p /dev/ttyUSB1
 ------------------
 
 * In the release package, please find these files:
-  - sec_usb_xloader.img
-  - sec_uce_boot.img
-  - sec_fastboot.img
+  - hisi-sec_usb_xloader.img
+  - hisi-sec_uce_boot.img
+  - hisi-sec_fastboot.img
 * Change Jumper settings, to enter forced-download mode:
   - find J2001, short Pin 1-2
   - find J2001, short Pin 3-4
@@ -42,9 +42,9 @@ sudo ./hikey_idt -c config -p /dev/ttyUSB1
 * Insert USB Type-C cable (OTG port) to the board, and connect the other end to your Linux PC, then
 * Check whether there is a device node "/dev/ttyUSBx". If there is, it means your PC has detected the target board; If there is not, try to repeat previous steps.
 * Prepare the config file. The third image runs on Cortex A53 core, and others are not. You need to put all images into the same directory of hikey_idt. The contents should be in below.
-  - ./sec_usb_xloader.img 0x00020000
-  - ./sec_uce_boot.img 0x6A908000
-  - ./sec_fastboot.img 0x1AC00000
+  - ./hisi-sec_usb_xloader.img 0x00020000
+  - ./hisi-sec_uce_boot.img 0x6A908000
+  - ./hisi-sec_fastboot.img 0x1AC00000
 * Run the script. Eg. if the device node you get from step e is "/dev/ttyUSB1", then use "-d /dev/ttyUSB1". A complete command line looks like:
 ```sh
 $ sudo ./hikey_idt -c config -p /dev/ttyUSB1
@@ -53,19 +53,19 @@ $ sudo ./hikey_idt -c config -p /dev/ttyUSB1
 ```sh
 Config name: config
 Port name: /dev/ttyUSB1
-0: Image: ./sec_usb_xloader.img Downalod Address: 0x20000
-1: Image: ./sec_uce_boot.img Downalod Address: 0x6a908000
-2: Image: ./sec_fastboot.img Downalod Address: 0x1ac00000
+0: Image: ./hisi-sec_usb_xloader.img Downalod Address: 0x20000
+1: Image: ./hisi-sec_uce_boot.img Downalod Address: 0x6a908000
+2: Image: ./hisi-sec_fastboot.img Downalod Address: 0x1ac00000
 Serial port open successfully!
-Start downloading ./sec_usb_xloader.img@0x20000...
+Start downloading ./hisi-sec_usb_xloader.img@0x20000...
 file total size 104256
 downlaod address 0x20000
 Finish downloading
-Start downloading ./sec_uce_boot.img@0x6a908000...
+Start downloading ./hisi-sec_uce_boot.img@0x6a908000...
 file total size 24000
 downlaod address 0x6a908000
 Finish downloading
-Start downloading ./sec_fastboot.img@0x1ac00000...
+Start downloading ./hisi-sec_fastboot.img@0x1ac00000...
 file total size 3110912
 downlaod address 0x1ac00000
 Finish downloading
@@ -79,11 +79,11 @@ After download these images onto the board DDR, you MUST use 'fastboot' tool to 
 Note: Don't forget to remove Jumper J2001 Pin 3-4 after you 'flash'ed these images.
 ```sh
 # partition table
-fastboot flash ptable ${IMG_FOLDER}/ptable.img
+fastboot flash ptable ${IMG_FOLDER}/hisi-ptable.img
 
 # bootloader
-sudo fastboot flash xloader  $(IMG_FOLDER)/sec_xloader.img
-sudo fastboot flash fastboot $(IMG_FOLDER)/fastboot.img
+sudo fastboot flash xloader  $(IMG_FOLDER)/hisi-sec_xloader.img
+sudo fastboot flash fastboot $(IMG_FOLDER)/hisi-fastboot.img
 
 # extra images
 fastboot flash nvme   ${IMG_FOLDER}/hisi-nvme.img

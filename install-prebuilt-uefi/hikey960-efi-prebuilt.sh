@@ -65,7 +65,7 @@ echo "Sleeping till device resets... zzz"
 sleep 15
 
 fastboot flash ptable prm_ptable.img
-fastboot flash xloader sec_xloader.img
+fastboot flash xloader hisi-sec_xloader.img
 fastboot flash fastboot l-loader.bin
 fastboot flash fip fip.bin
 

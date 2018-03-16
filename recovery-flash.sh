@@ -10,11 +10,11 @@ fi
 sudo ./hikey_idt -c config -p ${DEVICE}
 
 # partition table
-fastboot flash ptable ${IMG_FOLDER}/ptable.img
+fastboot flash ptable ${IMG_FOLDER}/hisi-ptable.img
 
 # bootloader
-fastboot flash xloader ${IMG_FOLDER}/sec_xloader.img
-fastboot flash fastboot ${IMG_FOLDER}/fastboot.img
+fastboot flash xloader ${IMG_FOLDER}/hisi-sec_xloader.img
+fastboot flash fastboot ${IMG_FOLDER}/hisi-fastboot.img
 
 # extra images
 fastboot flash nvme   ${IMG_FOLDER}/hisi-nvme.img

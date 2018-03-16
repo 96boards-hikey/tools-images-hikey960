@@ -19,6 +19,6 @@ sudo ${UEFI_BUILD_PATH}/hikey_idt -c ${UEFI_BUILD_PATH}/config -p ${DEVICE}
 fastboot flash ptable ${UEFI_BUILD_PATH}/prm_ptable.img
 
 # bootloader
-fastboot flash xloader ${UEFI_BUILD_PATH}/sec_xloader.img
+fastboot flash xloader ${UEFI_BUILD_PATH}/hisi-sec_xloader.img
 fastboot flash fastboot ${UEFI_BUILD_PATH}/l-loader.bin
 fastboot flash fip ${UEFI_BUILD_PATH}/fip.bin
