@@ -10,6 +10,7 @@ BASE_URL=https://snapshots.linaro.org/96boards/reference-platform/components/uef
 VERSION=20
 PRODUCT=hikey960
 RELEASE=release
+DEVICE=/dev/ttyUSB1
 
 if [ $# -eq 0 ]; then
 	echo "Usage: hikey-efi-flash-image -h"
@@ -35,6 +36,10 @@ RELEASE=debug
 -r|--release)
 RELEASE=release
 ;;
+-t|--tty_device)
+DEVICE=$2
+shift
+;;
 -v|--version)
 VERSION=$2
 shift
@@ -59,7 +64,7 @@ wget -A bin,config,efi,hikey_idt,img,txt -m -nd -np "$UEFI_URL"
 
 echo Running hikey_idt...
 chmod +x hikey_idt
-./hikey_idt -c config
+./hikey_idt -c config -p ${DEVICE}
 
 echo "Sleeping till device resets... zzz"
 sleep 15
