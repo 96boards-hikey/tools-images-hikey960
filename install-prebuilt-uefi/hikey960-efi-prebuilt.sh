@@ -25,9 +25,11 @@ case $key in
 -h)
 echo "Look the file to get help"
 echo "Use -d or -r to download debug or release version"
+echo "Use -t to specify which terminal device to use to connect to the board"
 echo "Use -v to specify build no."
-echo "Example: "$0" -r -v 20"
-echo "this downloads build #20 release version"
+echo "Example: "$0" -r -t /dev/ttyUSB1 -v 20"
+echo "this downloads build #20 release version and flashes the device"
+echo "represented by /dev/ttyUSB1"
 exit 0
 ;;
 -d|--debug)
