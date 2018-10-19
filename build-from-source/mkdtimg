@@ -30,26 +30,23 @@ dtimg_version = 1
 dtb_count = 1
 
 def write32(output, value):
-	output.write(chr(value & 255)) ; value=value // 256
-	output.write(chr(value & 255)) ; value=value // 256
-	output.write(chr(value & 255)) ; value=value // 256
-	output.write(chr(value & 255))
+	b = [value & 0xff, (value>>8) & 0xff, (value>>16) & 0xff, (value>>24) & 0xff]
+	output.write(bytearray(b))
 
-def compress(filename, input, output):
-	output.write('\037\213\010')
-	output.write(chr(0))
+def compress(filename, inp, output):
+	b = [0x1f, 0x8b, 0x8, 0]
+	output.write(bytearray(b))
 
 	statval = stat(filename)
-	write32(output, 0)
-	output.write('\002')
-	output.write('\003')
+	b = [0, 0, 0, 0, 2, 3]
+	output.write(bytearray(b))
 
-	crcval = zlib.crc32("")
+	crcval = zlib.crc32(b"")
 	compobj = zlib.compressobj(9, zlib.DEFLATED, -zlib.MAX_WBITS,
 		zlib.DEF_MEM_LEVEL, 0)
 	while True:
-		data = input.read(1024)
-		if data == "":
+		data = inp.read(1024)
+		if data == b"":
 			break
 		crcval = zlib.crc32(data, crcval)
 		output.write(compobj.compress(data))
@@ -60,10 +57,10 @@ def compress(filename, input, output):
 def dtb_compress(dtb_file):
 	try:
 		outputname = dtb_file + '.gz'
-		input = open(dtb_file, 'rb')
+		inp = open(dtb_file, 'rb')
 		output = open(outputname, 'wb')
-		compress(dtb_file, input, output)
-		input.close()
+		compress(dtb_file, inp, output)
+		inp.close()
 		output.close()
 	except Exception as e:
 		print('dtb_compress error:' + str(e))
@@ -99,8 +96,8 @@ def write_dtb_entry_t(dt_entry, args):
 			       0)) # reserved
 
 def write_padding(args, padding):
-	for i in range(0, padding):
-		args.output.write('\x00')
+	b = [0] * padding
+	args.output.write(bytearray(b))
 
 def write_dtb(args):
 	dtb_file = args.dtb
@@ -150,7 +147,7 @@ def parse_cmdline():
 
 def main():
 	args = parse_cmdline()
-	dtimg_head_info = dt_head_info('HSDT', dtimg_version, dtb_count)
+	dtimg_head_info = dt_head_info('HSDT'.encode('ascii'), dtimg_version, dtb_count)
 	write_head_info(dtimg_head_info, args)
 	write_dtb(args)
 	clean_gz_file(args)
