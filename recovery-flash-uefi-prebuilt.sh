@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -e
 # Copyright 2017 The Fuchsia Authors
 #
 # Use of this source code is governed by a MIT-style
@@ -27,6 +28,7 @@ echo "Look the file to get help"
 echo "Use -d or -r to download debug or release version"
 echo "Use -t to specify which terminal device to use to connect to the board"
 echo "Use -v to specify build no."
+echo "Use -u to use UEFI directory (instead of downloading it)"
 echo "Example: "$0" -r -t /dev/ttyUSB1 -v 20"
 echo "this downloads build #20 release version and flashes the device"
 echo "represented by /dev/ttyUSB1"
@@ -46,6 +48,11 @@ shift
 VERSION=$2
 shift
 ;;
+-u|--uefi)
+UEFI_DIR=$2
+NODOWNLOAD=true
+shift
+;;
 *)
 echo "Unknown option. Use -h for help"
 exit 0
@@ -54,15 +61,19 @@ esac
 shift
 done
 
-UEFI_DIR=${1:-./uefi}
+UEFI_DIR=${UEFI_DIR:-./uefi}
 
-UEFI_URL=${BASE_URL}/${VERSION}/${PRODUCT}/${RELEASE}/
-echo Creating $UEFI_DIR...
-mkdir -p "$UEFI_DIR"
-cd "$UEFI_DIR"
+if [[ -z $NODOWNLOAD ]]; then
+	UEFI_URL=${BASE_URL}/${VERSION}/${PRODUCT}/${RELEASE}/
+	echo Creating $UEFI_DIR...
+	mkdir -p "$UEFI_DIR"
+	cd "$UEFI_DIR"
 
-echo Fetching $UEFI_URL...
-wget -A bin,config,efi,hikey_idt,img,txt -m -nd -np "$UEFI_URL"
+	echo Fetching $UEFI_URL...
+	wget -A bin,config,efi,hikey_idt,img,txt -m -nd -np "$UEFI_URL"
+else
+	cd "$UEFI_DIR"
+fi
 
 echo Running hikey_idt...
 chmod +x hikey_idt
