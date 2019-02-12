@@ -14,7 +14,7 @@ RELEASE=release
 DEVICE=/dev/ttyUSB1
 
 if [ $# -eq 0 ]; then
-	echo "Usage: hikey-efi-flash-image -h"
+	echo "Usage: $0 -h"
 	exit 0
 fi
 

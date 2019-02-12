@@ -36,7 +36,7 @@ On the Hikey960
 
   ...Connect the usb-c otg to host system and make sure that shows up as ttyUSB1
 
-2. ``` sudo ./hikey960-efi-prebuilt.sh -h ```
+2. ``` sudo ./recovery-flash-uefi-prebuilt.sh -h ```
 
 3. Set switch 1 to on and 2 & 3 to off
 
