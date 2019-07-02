@@ -39,7 +39,7 @@ sudo ./hikey_idt -c config -p /dev/ttyUSB1
   - find J2001, short Pin 1-2
   - find J2001, short Pin 3-4
 * Apply power to the board.
-* Insert USB Type-C cable (OTG port) to the board, and connect the other end to your Linux PC, then
+* Insert USB micro-B cable (OTG port) to the board, and connect the other end to your Linux PC, then
 * Check whether there is a device node "/dev/ttyUSBx". If there is, it means your PC has detected the target board; If there is not, try to repeat previous steps.
 * Prepare the config file. The third image runs on Cortex A53 core, and others are not. You need to put all images into the same directory of hikey_idt. The contents should be in below.
   - ./hisi-sec_usb_xloader.img 0x00020000
@@ -138,7 +138,7 @@ You can use fastboot protocol to flash images to HiKey960. To enter fastboot fla
 * Connect serial mezzanine to HiKey960. Connect micro-USB to PC. And PC side, config USB serial as: 115200, 8N1
 * Power up HiKey960:
   - Plug in DC power, then
-  - Plug in USB Type-C cable, and connect the other end to your PC.
+  - Plug in USB micro-B cable, and connect the other end to your PC.
 * On PC side, in serial log, you should observe the following boot message:
 ```sh
 xloader chipid is: 0x36600110, start at 449ms.
