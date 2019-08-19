@@ -20,9 +20,6 @@ Bootloader
    * l-loader:
    [link](https://github.com/96boards-hikey/l-loader/tree/testing/hikey960_v1.2)
 
-   * uefi-tools: (master branch)
-   [link](https://git.linaro.org/uefi/uefi-tools.git)
-
    * atf-fastboot: (only for HiKey)
    [link](https://github.com/96boards-hikey/atf-fastboot/tree/master)
 
@@ -36,7 +33,6 @@ Bootloader
      git clone https://github.com/96boards-hikey/edk2 -b testing/hikey960_v2.5
      git clone https://github.com/96boards-hikey/OpenPlatformPkg -b testing/hikey960_v1.3.4
      git clone https://github.com/96boards-hikey/l-loader -b testing/hikey960_v1.2
-     git clone https://git.linaro.org/uefi/uefi-tools
      git clone https://github.com/96boards-hikey/atf-fastboot
      ```
 
@@ -52,30 +48,21 @@ Bootloader
      <br>`BUILDFLAGS=-DSERIAL_BASE=0xFDF05000`</br>
      <br>If your hikey960 hardware is v2 or newer, nothing to do.</br>
 
-   * Build it as debug mode. Create script file for build.
+   * Build it as debug/release mode with l-loader.sh script file. Setup your choice
+     on debug or release mode in the script. Set your toolchain path in the script.
      <br>`BUILD_OPTION=DEBUG`</br>
      <br>`export AARCH64_TOOLCHAIN=GCC5`</br>
-     <br>`export UEFI_TOOLS_DIR=${BUILD_PATH}/uefi-tools`<br>
-     <br>`export EDK2_DIR=${BUILD_PATH}/edk2`</br>
-     <br>`EDK2_OUTPUT_DIR=${EDK2_DIR}/Build/HiKey960/${BUILD_OPTION}_${AARCH64_TOOLCHAIN}`</br>
-     <br>`cd ${EDK2_DIR}`</br>
+     <br>`export LOADER_DIR=${BUILD_PATH}/l-loader`</br>
+     <br>`cd ${LOADER_DIR}`</br>
      <br>`# Build UEFI & ARM Trust Firmware`</br>
-     <br>`${UEFI_TOOLS_DIR}/uefi-build.sh -b ${BUILD_OPTION} -a ../arm-trusted-firmware hikey960`</br>
+     <br>`bash ./l-loader.sh hikey960`</br>
+     All images including partition table are generated in l-loader directory.
 
-   * Generate l-loader.bin and partition table
-     <br>_Make sure that you're using the sgdisk in the l-loader directory._</br>
-     <br>`cd ${BUILD_PATH}/l-loader`</br>
-     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl1.bin`</br>
-     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/bl2.bin`</br>
-     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/fip.bin`</br>
-     <br>`ln -sf ${EDK2_OUTPUT_DIR}/FV/BL33_AP_UEFI.fd`</br>
-     <br>`make hikey960`</br>
 
 3. Setup Console
 ----------------
 
-   * Install ser2net. Use telnet as the console since UEFI will output window
-     that fails to display in minicom.
+   * Install ser2net. Use telnet as the console since UEFI will output window that fails to display in minicom.
      <br>`$sudo apt-get install ser2net`</br>
 
    * Configure ser2net.
@@ -92,13 +79,7 @@ Bootloader
 4. Boot UEFI in recovery mode
 -----------------------------
 
-   * Fetch that are used in recovery mode. The code location is in below.
-     [link](https://github.com/96boards-hikey/tools-images-hikey960)
-
-   * Generate l-loader.bin.
-     <br>`$cd tools-images-hikey960`</br>
-     <br>`$ln -sf ${BUILD_PATH}/l-loader/l-loader.bin`</br>
-     <br>`$ln -sf ${BUILD_PATH}/l-loader/fip.bin`</br>
+   * Fetch that are used in recovery mode. They're generated in l-loader directory according to the steps above.
 
    * Prepare config file.
      <br>_$vi config_</br>
