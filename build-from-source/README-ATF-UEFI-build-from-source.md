@@ -50,8 +50,6 @@ Bootloader
 
    * Build it as debug/release mode with l-loader.sh script file. Setup your choice
      on debug or release mode in the script. Set your toolchain path in the script.
-     <br>`BUILD_OPTION=DEBUG`</br>
-     <br>`export AARCH64_TOOLCHAIN=GCC5`</br>
      <br>`export LOADER_DIR=${BUILD_PATH}/l-loader`</br>
      <br>`cd ${LOADER_DIR}`</br>
      <br>`# Build UEFI & ARM Trust Firmware`</br>
