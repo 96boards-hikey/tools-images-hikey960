@@ -7,8 +7,8 @@ set -e
 # license that can be found in the LICENSE file or at
 # https://opensource.org/licenses/MIT
 
-BASE_URL=https://snapshots.linaro.org/96boards/reference-platform/components/uefi-staging
-VERSION=20
+BASE_URL=https://snapshots.linaro.org/reference-platform/components/uefi-staging
+VERSION=latest
 PRODUCT=hikey960
 RELEASE=release
 DEVICE=/dev/ttyUSB1
