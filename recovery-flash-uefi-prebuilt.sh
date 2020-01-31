@@ -27,6 +27,7 @@ case $key in
 echo "Look the file to get help"
 echo "Use -d or -r to download debug or release version"
 echo "Use -t to specify which terminal device to use to connect to the board"
+echo "Use -c to specify which console to send 'f' char for fastboot mode"
 echo "Use -v to specify build no."
 echo "Use -u to use UEFI directory (instead of downloading it)"
 echo "Example: "$0" -r -t /dev/ttyUSB1 -v 20"
@@ -42,6 +43,10 @@ RELEASE=release
 ;;
 -t|--tty_device)
 DEVICE=$2
+shift
+;;
+-c|--con_device)
+CONSOLE_DEVICE=$2
 shift
 ;;
 -v|--version)
@@ -80,7 +85,13 @@ chmod +x hikey_idt
 ./hikey_idt -c config -p ${DEVICE}
 
 echo "Sleeping till device resets... zzz"
-sleep 15
+
+if [[ ! -z $CONSOLE_DEVICE ]]; then
+	sleep 1
+	echo 'f' > ${CONSOLE_DEVICE}
+fi
+
+sleep 5
 
 fastboot flash ptable prm_ptable.img
 fastboot flash xloader hisi-sec_xloader.img
